@@ -20,7 +20,6 @@ public class ShopCategory {
     private Integer priority;
     // 创建时间
     private Date createTime;
-    // 最近的更新时间
     private Date lastEditTime;
     // 父类别
     private ShopCategory parent;
