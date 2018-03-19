@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * 店铺类别实体类
- * Creater dengting on 2018/3/19
+ * Creater dengting
  */
 public class ShopCategory {
 
