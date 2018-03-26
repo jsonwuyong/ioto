@@ -1,4 +1,4 @@
-package com.ioto.web.superadmin;
+package com.ioto.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ioto.entity.Area;
