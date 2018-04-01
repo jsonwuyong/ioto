@@ -11,6 +11,5 @@
     <title>ioto</title>
   </head>
   <body>
-   Hello World
   </body>
 </html>

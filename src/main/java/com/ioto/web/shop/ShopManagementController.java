@@ -1,13 +1,16 @@
-package com.ioto.web;
+package com.ioto.web.shop;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ioto.dto.ImageHolder;
 import com.ioto.dto.ShopExecution;
+import com.ioto.entity.Area;
 import com.ioto.entity.PersonInfo;
 import com.ioto.entity.Shop;
+import com.ioto.entity.ShopCategory;
 import com.ioto.enums.ShopStateEnum;
 import com.ioto.exceptions.ShopOperationException;
 import com.ioto.service.AreaService;
+import com.ioto.service.ShopCategoryService;
 import com.ioto.service.ShopService;
 import com.ioto.util.CodeUtil;
 import com.ioto.util.HttpServletRequestUtil;
@@ -39,6 +42,30 @@ public class ShopManagementController {
 
     @Autowired
     private AreaService areaService;
+
+    @Autowired
+    private ShopCategoryService shopCategoryService;
+
+
+    @RequestMapping(value = "getshopinitinfo",method = RequestMethod.GET)
+    @ResponseBody
+    private Map<String,Object>getShopInitInfo(){
+        Map<String, Object> modelMap = new HashMap<String, Object>();
+        List<ShopCategory> shopCategoryList = new ArrayList<ShopCategory>();
+        List<Area> areaList = new ArrayList<Area>();
+        try {
+            shopCategoryList = shopCategoryService.getShopCategoryList(new ShopCategory());
+            areaList = areaService.getAreaList();
+            modelMap.put("shopCategoryList", shopCategoryList);
+            modelMap.put("areaList", areaList);
+            modelMap.put("success", true);
+        } catch (Exception e) {
+            modelMap.put("success", false);
+            modelMap.put("errMsg", e.getMessage());
+        }
+        return modelMap;
+
+    }
 
     @RequestMapping(value = "/getshopinfo", method = RequestMethod.GET)
     @ResponseBody
