@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ioto.dao.ShopCategoryDao">
-    <select id="queryShopCategory" resultType="com.ioto.entity.ShopCategory">
+    <select id="queryShopCategore" resultType="com.ioto.entity.ShopCategory">
         SELECT
 		shop_category_id,
 		shop_category_name,

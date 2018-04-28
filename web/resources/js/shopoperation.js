@@ -1,14 +1,15 @@
 
 $(function(){
     // 从URL里获取shopId参数的值
-    var shopId = getQueryString('shopId');
+    // var shopId = getQueryString('shopId');
+    var shopId = "";
     // 由于店铺注册和编辑使用的是同一个页面，
     // 该标识符用来标明本次是添加还是编辑操作
     var isEdit = shopId ? true : false;
     // 用于店铺注册时候的店铺类别以及区域列表的初始化的URL
     var initUrl = '/ioto/shop/getshopinitinfo';
     // 注册店铺的URL
-    var registerShopUrl = '/ioto/shop/shopadmin/registershop';
+    var registerShopUrl = '/ioto/shop/registershop';
     // 编辑店铺前需要获取店铺信息，这里为获取当前店铺信息的URL
     var shopInfoUrl = "/ioto/shop/shopadmin/getshopbyid?shopId=" + shopId;
     // 编辑店铺信息的URL
@@ -19,7 +20,7 @@ $(function(){
     // } else {
     //     getShopInfo(shopId);
     // }
-    getShopInfo(shopId);
+    getShopInitInfo();
     // 通过店铺Id获取店铺信息
     function getShopInfo(shopId){
         $.getJSON(shopInfoUrl,function(data){
@@ -106,7 +107,7 @@ $(function(){
         formData.append('verifyCodeActual', verifyCodeActual);
         // 将数据提交至后台处理相关操作
         $.ajax({
-            url:(isEdit ? editShopUrl : registerShopUrl),
+            url:registerShopUrl,
             type:'POST',
             data:formData,
             contentType : false,
@@ -117,7 +118,7 @@ $(function(){
                     $.toast('提交成功！');
                     if (!isEdit) {
                         // 若为注册操作，成功后返回店铺列表页
-                        window.location.href = "/o2o/shopadmin/shoplist";
+                        window.location.href = "/ioto/shop/shoplist";
                     }
                 } else {
                     $.toast('提交失败！' + data.errMsg);

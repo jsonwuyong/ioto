@@ -1,6 +1,5 @@
 package com.ioto.service.impl;
 
-import com.ioto.cache.JedisUtil;
 import com.ioto.dao.ShopCategoryDao;
 import com.ioto.entity.ShopCategory;
 import com.ioto.service.ShopCategoryService;
@@ -19,10 +18,6 @@ public class ShopCategoryServiceImpl implements ShopCategoryService {
 
     @Autowired
     private ShopCategoryDao shopCategoryDao;
-    @Autowired
-    private JedisUtil.Keys jedisKeys;
-    @Autowired
-    private JedisUtil.Strings jedisStrings;
 
     private static Logger logger = LoggerFactory.getLogger(ShopCategoryServiceImpl.class);
 
